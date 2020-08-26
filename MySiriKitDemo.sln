@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySiriKitDemo", "MySiriKitDemo\MySiriKitDemo.csproj", "{0E11888C-5990-478D-8ADE-054897DD82BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySiriKitDemoIntents", "MySiriKitDemoIntents\MySiriKitDemoIntents.csproj", "{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Debug|iPhone.Build.0 = Debug|iPhone
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Release|iPhone.ActiveCfg = Release|iPhone
+		{0E11888C-5990-478D-8ADE-054897DD82BB}.Release|iPhone.Build.0 = Release|iPhone
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Debug|iPhone.Build.0 = Debug|iPhone
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Release|iPhone.ActiveCfg = Release|iPhone
+		{D8AF2A32-1D70-415B-8234-9B9E4C3F4C7D}.Release|iPhone.Build.0 = Release|iPhone
+	EndGlobalSection
+EndGlobal
