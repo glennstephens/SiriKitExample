@@ -23,11 +23,14 @@ namespace MySiriKitDemo
             details.TextColor = UIColor.Black;
             details.LineBreakMode = UILineBreakMode.WordWrap;
 
-            details.Text = "Say 'start a tag workout' or 'start a tag workout for 10 minutes'";
+            details.Text = "Say 'start a tag workout'";
 
             Add(details);
 
-            NewWorkoutOperationManager.OnStartWorkoutNewWorkout += StartANewWorkout;
+            NewSiriWorkoutOperationManager.OnStartNewWorkout += StartANewWorkout;
+            NewSiriWorkoutOperationManager.OnPauseWorkout += PauseTheWorkout;
+            NewSiriWorkoutOperationManager.OnResumeWorkout += ResumeTheWorkout;
+            NewSiriWorkoutOperationManager.OnCancelWorkout += CancelTheWorkout;
         }
 
         private void StartANewWorkout(INStartWorkoutIntent workout)
@@ -41,6 +44,21 @@ namespace MySiriKitDemo
             {
                 details.Text = "Doing a " + workout.WorkoutName + " workout for " + workout.GoalValue + " seconds";
             }
+        }
+
+        void PauseTheWorkout(INPauseWorkoutIntent intent)
+        {
+            details.Text = "Paused workout";
+        }
+
+        void ResumeTheWorkout(INResumeWorkoutIntent intent)
+        {
+            details.Text = "Resumed workout";
+        }
+
+        void CancelTheWorkout(INCancelWorkoutIntent intent)
+        {
+            details.Text = "Workout cancelled";
         }
 
         public override void DidReceiveMemoryWarning()

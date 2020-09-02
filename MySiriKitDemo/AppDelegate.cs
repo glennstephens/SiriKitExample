@@ -25,6 +25,7 @@ namespace MySiriKitDemo
                 switch (status)
                 {
                     case INSiriAuthorizationStatus.Authorized:
+                        SetupVocabulary();
                         break;
                     case INSiriAuthorizationStatus.Denied:
                         break;
@@ -38,15 +39,68 @@ namespace MySiriKitDemo
             return true;
         }
 
+        public NSOrderedSet<NSString> GetCustomWorkoutNames()
+        {
+            var workoutNames = new NSMutableOrderedSet<NSString>();
+
+            foreach (string workoutName in new string[] { "Tag", "Jumping", "Hoops" })
+            {
+                workoutNames.Add(new NSString(workoutName));
+            }
+
+            return new NSOrderedSet<NSString>(workoutNames.AsSet());
+        }
+
+        void SetupVocabulary()
+        {
+            // Clear any existing vocabulary
+            INVocabulary.SharedVocabulary.RemoveAllVocabularyStrings();
+
+            // Register new vocabulary
+            INVocabulary.SharedVocabulary.SetVocabularyStrings(
+                GetCustomWorkoutNames(), INVocabularyStringType.WorkoutActivityName);
+        }
+
+        void DoStartWorkout(INStartWorkoutIntent intent)
+        {
+            // Notify the app that it is there
+            NewSiriWorkoutOperationManager.NotifyStartWorkout(intent);
+        }
+
+        void DoPauseWorkout(INPauseWorkoutIntent intent)
+        {
+            NewSiriWorkoutOperationManager.NotifyPauseWorkout(intent);
+        }
+
+        void DoCancelWorkout(INCancelWorkoutIntent intent)
+        {
+            NewSiriWorkoutOperationManager.NotifyCancelWorkout(intent);
+        }
+
+        void DoResumeWorkout(INResumeWorkoutIntent intent)
+        {
+            NewSiriWorkoutOperationManager.NotifyResumeWorkout(intent);
+        }
+
         public override bool ContinueUserActivity(UIApplication application,
             NSUserActivity userActivity,
             UIApplicationRestorationHandler completionHandler)
         {
             // Get the intent in the right format
-            var workoutIntent = userActivity.GetInteraction().Intent as INStartWorkoutIntent;
-
-            // Notify the app that it is there
-            NewWorkoutOperationManager.Notify(workoutIntent);
+            var intent = userActivity.GetInteraction().Intent;
+            if (intent is INStartWorkoutIntent)
+            {
+                DoStartWorkout(userActivity.GetInteraction().Intent as INStartWorkoutIntent);
+            } else if (intent is INPauseWorkoutIntent)
+            {
+                DoPauseWorkout(userActivity.GetInteraction().Intent as INPauseWorkoutIntent);
+            } else if (intent is INResumeWorkoutIntent)
+            {
+                DoResumeWorkout(userActivity.GetInteraction().Intent as INResumeWorkoutIntent);
+            } else if (intent is INCancelWorkoutIntent)
+            {
+                DoCancelWorkout(userActivity.GetInteraction().Intent as INCancelWorkoutIntent);
+            }
 
             // Don't forget the completion handler (bad things happen otherwise)
             completionHandler(new NSObject[] { });

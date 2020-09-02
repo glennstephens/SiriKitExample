@@ -29,6 +29,9 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>INStartWorkoutIntent</string>
+				<string>INPauseWorkoutIntent</string>
+				<string>INResumeWorkoutIntent</string>
+				<string>INCancelWorkoutIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

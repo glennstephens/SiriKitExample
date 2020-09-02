@@ -7,16 +7,50 @@ namespace MySiriKitDemo
     /// A nice friendly singleton-ish object so that the Intent (like the start workout) can be received by other
     /// objects.
     /// </summary>
-    public class NewWorkoutOperationManager
+    public class NewSiriWorkoutOperationManager
     {
-        public static void Notify(INStartWorkoutIntent workout)
+        // Start workout intent
+        public static void NotifyStartWorkout(INStartWorkoutIntent workout)
         {
-            if (OnStartWorkoutNewWorkout != null)
+            if (OnStartNewWorkout != null)
             {
-                OnStartWorkoutNewWorkout(workout);
+                OnStartNewWorkout(workout);
             }
         }
 
-        public static Action<INStartWorkoutIntent> OnStartWorkoutNewWorkout;
+        public static Action<INStartWorkoutIntent> OnStartNewWorkout;
+
+        // Pause workout intent
+        public static void NotifyPauseWorkout(INPauseWorkoutIntent workout)
+        {
+            if (OnPauseWorkout != null)
+            {
+                OnPauseWorkout(workout);
+            }
+        }
+
+        public static Action<INPauseWorkoutIntent> OnPauseWorkout;
+
+        // Resume workout intent
+        public static void NotifyResumeWorkout(INResumeWorkoutIntent workout)
+        {
+            if (OnResumeWorkout != null)
+            {
+                OnResumeWorkout(workout);
+            }
+        }
+
+        public static Action<INResumeWorkoutIntent> OnResumeWorkout;
+
+        // Cancel workout intent
+        public static void NotifyCancelWorkout(INCancelWorkoutIntent workout)
+        {
+            if (OnCancelWorkout != null)
+            {
+                OnCancelWorkout(workout);
+            }
+        }
+
+        public static Action<INCancelWorkoutIntent> OnCancelWorkout;
     }
 }
